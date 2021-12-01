@@ -24,9 +24,12 @@ jobs:
       uses: actions/setup-python@v2
       with:
         python-version: ${{ matrix.python-version }}
+    
+    - name: Install PyTest
+      run: pip install pytest
 
     - name: PyTest
-      run: python3 -m pytest test --junit-xml pytest.xml
+      run: python -m pytest test --junit-xml pytest.xml
 
     - name: Upload Unit Test Results
       if: always()
